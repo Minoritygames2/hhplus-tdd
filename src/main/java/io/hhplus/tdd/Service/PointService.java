@@ -20,26 +20,19 @@ public class PointService {
         this.userPointTable = userPointTable;
     }
 
-    public UserPoint point(
-            @PathVariable long id
-    ) {
+    public UserPoint point(long id) {
         if (id < 0)
             throw new IllegalArgumentException("id값은 음수가 될 수 없습니다.");
         return userPointTable.selectById(id);
     }
 
-    public List<PointHistory> history(
-            @PathVariable long id
-    ) {
+    public List<PointHistory> history(long id) {
         if (id < 0)
             throw new IllegalArgumentException("id값은 음수가 될 수 없습니다.");
         return pointHistoryTable.selectAllByUserId(id);
     }
 
-    public UserPoint charge(
-            @PathVariable long id,
-            @RequestBody long amount
-    ) {
+    public UserPoint charge(long id,long amount) {
         if (id < 0)
             throw new IllegalArgumentException("id값은 음수가 될 수 없습니다.");
         if (amount < 0)
@@ -62,10 +55,7 @@ public class PointService {
         return result;
     }
 
-    public UserPoint use(
-            @PathVariable long id,
-            @RequestBody long amount
-    ) {
+    public UserPoint use(long id,long amount) {
         if (id < 0)
             throw new IllegalArgumentException("id값은 음수가 될 수 없습니다.");
 
