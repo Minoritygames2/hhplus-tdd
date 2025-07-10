@@ -67,4 +67,30 @@ public class PointController {
     ) {
         return pointService.use(id, amount);
     }
+
+    /**
+     * 중복 호출 확인용 추가
+     * 1000ms이하로 중복 호출이 있을경우 error처리를 했더니 기존 동시성 테스트와 부딪혀서 추가했습니다
+     * 1000ms이하로 중복 호출이 있을경우 error처리는 제가 임의로 추가한 조건이므로 따로 메서드를 뺐습니다
+     */
+    @PatchMapping("{id}/charge_duplicatecall")
+    public UserPoint charge_duplicatecall(
+            @PathVariable long id,
+            @RequestBody long amount
+    ) {
+        return pointService.charge_duplicateCall(id, amount);
+    }
+
+    /**
+     * 중복 호출 확인용 추가
+     * 1000ms이하로 중복 호출이 있을경우 error처리를 했더니 기존 동시성 테스트와 부딪혀서 추가했습니다
+     * 1000ms이하로 중복 호출이 있을경우 error처리는 제가 임의로 추가한 조건이므로 따로 메서드를 뺐습니다
+     */
+    @PatchMapping("{id}/use_duplicatecall")
+    public UserPoint use_duplicatecall(
+            @PathVariable long id,
+            @RequestBody long amount
+    ) {
+        return pointService.use_duplicateCall(id, amount);
+    }
 }
